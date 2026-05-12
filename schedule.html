@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Schedule — Jiujitsu Prime Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&family=Nunito:wght@900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.1/iframeResizer.min.js"><\/script>
+<style>
+:root,[data-theme="dark"]{
+  --black:#0A0A0A;--charcoal:#1A1A1A;--charcoal-light:#242424;
+  --gold:#C9A84C;--gold-light:#e0bc6a;--gold-dark:#a8882e;
+  --offwhite:#F5F0E8;--offwhite-dim:#cec9c0;--text-muted:#888;
+  --border:rgba(201,168,76,0.18);
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-accent:'Bebas Neue',sans-serif;
+  --nav-h:72px;--ease-out:cubic-bezier(0.16,1,0.3,1);
+  --page-bg:#0A0A0A;--nav-scrolled-bg:rgba(10,10,10,0.92);
+  --card-bg:#141414;--section-alt:#111111;
+}
+[data-theme="light"]{
+  --black:#f3ede0;--charcoal:#ebe4d4;--charcoal-light:#e0d8c8;
+  --gold:#8a6a00;--gold-light:#b08a10;--gold-dark:#5a4600;
+  --offwhite:#1a1a1a;--offwhite-dim:#3a3028;--text-muted:#6b5e45;
+  --border:rgba(100,80,20,0.2);
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-accent:'Bebas Neue',sans-serif;
+  --nav-h:72px;--ease-out:cubic-bezier(0.16,1,0.3,1);
+  --page-bg:#f3ede0;--nav-scrolled-bg:rgba(243,237,224,0.96);
+  --card-bg:#ffffff;--section-alt:#ebe4d4;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--page-bg);color:var(--offwhite);font-family:var(--font-body);font-weight:300;line-height:1.6;overflow-x:hidden;transition:background .35s,color .35s;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--page-bg)}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:2px}
+
+/* ── NOISE ── */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px 256px}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 40px;background:var(--nav-scrolled-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border);transition:background .4s}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto}
+.nav-logo{display:flex;align-items:center}
+.logo-mark{display:inline-flex;flex-direction:column;align-items:center;line-height:1;gap:0}
+.logo-mark .logo-top{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.35rem;color:var(--offwhite);letter-spacing:-.02em;line-height:1}
+.logo-mark .logo-bot{font-family:var(--font-body);font-weight:400;font-size:.48rem;color:var(--offwhite);letter-spacing:.45em;text-transform:uppercase;margin-top:1px;padding-left:.45em}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--font-body);font-size:.8rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--offwhite-dim);transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--offwhite)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--gold)}
+.lang-switcher{display:flex;align-items:center;gap:4px;margin-left:2rem}
+.lang-btn{font-family:var(--font-accent);font-size:.75rem;letter-spacing:.1em;color:var(--text-muted);padding:4px 8px;border-radius:3px;transition:color .2s,background .2s;cursor:pointer}
+.lang-btn.active,.lang-btn:hover{color:var(--gold);background:rgba(201,168,76,.08)}
+.lang-sep{color:rgba(201,168,76,.3);font-size:.6rem}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--text-muted);padding:5px 7px;border-radius:3px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s;line-height:1}
+.theme-btn:hover{color:var(--gold);border-color:var(--gold)}
+.theme-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+[data-theme="light"] .icon-sun{display:none}
+[data-theme="dark"] .icon-moon{display:none}
+html:not([data-theme]) .icon-moon{display:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1001}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--offwhite);transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;background:var(--page-bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:var(--font-accent);font-size:2rem;letter-spacing:.15em;color:var(--offwhite);margin:.6rem 0;transition:color .2s}
+.mobile-nav a:hover{color:var(--gold)}
+.mobile-lang{display:flex;gap:1rem;margin-top:2rem}
+.mobile-lang button{font-family:var(--font-accent);font-size:1rem;letter-spacing:.1em;color:var(--text-muted);cursor:pointer;transition:color .2s}
+.mobile-lang button.active,.mobile-lang button:hover{color:var(--gold)}
+
+/* ── PAGE HERO BANNER ── */
+.page-banner{
+  position:relative;padding:calc(var(--nav-h) + 80px) 40px 72px;
+  overflow:hidden;
+  background:var(--charcoal);
+}
+/* large decorative word behind title */
+.banner-bg-word{
+  position:absolute;bottom:-0.15em;left:50%;transform:translateX(-50%);
+  font-family:var(--font-accent);font-size:clamp(7rem,18vw,16rem);
+  color:transparent;-webkit-text-stroke:1px rgba(201,168,76,.07);
+  white-space:nowrap;pointer-events:none;letter-spacing:.05em;user-select:none;
+  line-height:1;
+}
+/* gold corner rule top-left */
+.banner-rule{
+  position:absolute;top:calc(var(--nav-h) + 24px);left:40px;
+  display:flex;align-items:center;gap:10px;
+}
+.banner-rule::before{
+  content:'';display:block;width:32px;height:1px;background:var(--gold);
+}
+.banner-rule span{
+  font-family:var(--font-accent);letter-spacing:.2em;font-size:.7rem;color:var(--gold);
+}
+/* diagonal accent line */
+.banner-deco{
+  position:absolute;right:0;top:0;bottom:0;width:320px;pointer-events:none;overflow:hidden;
+}
+.banner-deco svg{position:absolute;inset:0;width:100%;height:100%}
+.banner-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;text-align:center}
+.banner-eyebrow{
+  font-family:var(--font-accent);letter-spacing:.25em;font-size:.78rem;
+  color:var(--gold);display:block;margin-bottom:1.2rem;
+  opacity:0;animation:fadeUp .7s .1s var(--ease-out) forwards;
+}
+.banner-title{
+  font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5.5rem);
+  font-weight:600;line-height:1.05;letter-spacing:-.01em;color:var(--offwhite);
+  display:inline-block;position:relative;
+  opacity:0;animation:fadeUp .8s .25s var(--ease-out) forwards;
+}
+.banner-title::after{
+  content:'';position:absolute;bottom:-10px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent);
+}
+.banner-sub{
+  font-family:var(--font-body);font-size:clamp(.9rem,1.5vw,1.05rem);
+  color:var(--offwhite-dim);font-weight:300;max-width:520px;margin:1.8rem auto 0;
+  opacity:0;animation:fadeUp .7s .4s var(--ease-out) forwards;
+}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{
+  max-width:1200px;margin:0 auto;padding:24px 40px 0;
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-body);font-size:.78rem;color:var(--text-muted);
+}
+.breadcrumb a{transition:color .2s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb-sep{color:var(--border)}
+
+/* ── INFO CARDS (above widget) ── */
+.info-strip{
+  background:var(--section-alt);
+  border-bottom:1px solid var(--border);
+  padding:40px 40px;
+}
+.info-strip-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:2px;overflow:hidden;
+}
+.info-card{
+  background:var(--card-bg);padding:28px 24px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:background .25s;
+}
+.info-card:hover{background:var(--charcoal-light)}
+[data-theme="light"] .info-card:hover{background:var(--charcoal)}
+.info-card-icon{
+  width:32px;height:32px;margin-bottom:4px;
+  color:var(--gold);
+}
+.info-card-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.info-card-label{
+  font-family:var(--font-accent);letter-spacing:.15em;font-size:.68rem;color:var(--text-muted);
+}
+.info-card-value{
+  font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--offwhite);line-height:1.2;
+}
+.info-card-detail{
+  font-size:.78rem;color:var(--offwhite-dim);font-weight:300;line-height:1.5;
+}
+
+/* ── WIDGET SECTION ── */
+.widget-section{flex:1;padding:56px 40px 80px;background:var(--page-bg)}
+.widget-inner{max-width:1200px;margin:0 auto}
+.widget-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);
+}
+.widget-title{
+  font-family:var(--font-display);font-size:1.6rem;font-weight:500;color:var(--offwhite);
+}
+.widget-title span{color:var(--gold);font-style:italic}
+.widget-note{font-size:.78rem;color:var(--text-muted)}
+.glofox-wrap{
+  border:1px solid var(--border);border-radius:3px;
+  overflow:hidden;background:var(--card-bg);
+  box-shadow:0 0 0 1px rgba(201,168,76,.04),0 20px 60px rgba(0,0,0,.35);
+}
+[data-theme="light"] .glofox-wrap{box-shadow:0 4px 32px rgba(0,0,0,.1)}
+.glofox-inner{padding:0}
+.glofox-footer{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:14px;border-top:1px solid var(--border);
+  font-size:.72rem;color:var(--text-muted);font-family:var(--font-body);
+}
+.glofox-footer a{color:var(--gold);font-weight:500;transition:opacity .2s}
+.glofox-footer a:hover{opacity:.75}
+
+/* ── CTA BAND ── */
+.cta-band{
+  background:var(--charcoal);border-top:1px solid var(--border);
+  padding:64px 40px;text-align:center;
+}
+.cta-band-inner{max-width:600px;margin:0 auto}
+.cta-eyebrow{font-family:var(--font-accent);letter-spacing:.2em;font-size:.75rem;color:var(--gold);display:block;margin-bottom:1rem}
+.cta-headline{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:var(--offwhite);margin-bottom:.8rem;line-height:1.2}
+.cta-sub{font-size:.9rem;color:var(--offwhite-dim);margin-bottom:2rem}
+.btn-gold{
+  display:inline-block;font-family:var(--font-body);font-size:.85rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;padding:14px 40px;
+  background:var(--gold);color:#0a0a0a;border-radius:2px;
+  position:relative;overflow:hidden;transition:transform .3s var(--ease-out),box-shadow .3s;
+}
+.btn-gold::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
+.btn-gold:hover::before{left:100%}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.35)}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);padding:64px 0 32px;border-top:1px solid var(--border);margin-top:auto}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 40px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px}
+.footer-brand p{font-size:.88rem;color:var(--offwhite-dim);line-height:1.7;margin-top:.5rem;max-width:260px}
+.footer-col h4{font-family:var(--font-accent);letter-spacing:.15em;font-size:.75rem;color:var(--gold);margin-bottom:1.2rem}
+.footer-col a,.footer-col p{display:block;font-size:.85rem;color:var(--offwhite-dim);margin-bottom:.6rem;transition:color .2s;line-height:1.5}
+.footer-col a:hover{color:var(--offwhite)}
+.footer-social{display:flex;gap:1rem;margin-top:1.2rem}
+.social-link{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;color:var(--text-muted)}
+.social-link:hover{border-color:var(--gold);color:var(--gold)}
+.social-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);margin-top:40px}
+.footer-copy{font-size:.8rem;color:var(--text-muted)}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{font-size:.8rem;color:var(--text-muted);transition:color .2s}
+.footer-legal a:hover{color:var(--gold)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .info-strip-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  #nav{padding:0 20px}
+  .nav-links,.lang-switcher{display:none}
+  .hamburger{display:flex}
+  .theme-btn{display:none}
+  .page-banner{padding:calc(var(--nav-h) + 48px) 24px 56px}
+  .banner-deco{display:none}
+  .banner-rule{left:24px}
+  .info-strip{padding:32px 20px}
+  .info-strip-inner{grid-template-columns:1fr 1fr}
+  .widget-section{padding:40px 20px 60px}
+  .widget-header{flex-direction:column;align-items:flex-start;gap:8px}
+  .cta-band{padding:48px 24px}
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:1rem;text-align:center}
+  .breadcrumb{padding:20px 20px 0}
+}
+@media(max-width:480px){
+  .info-strip-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark"><span class="logo-top">jiu-jitsu</span><span class="logo-bot">Prime Club</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#founder" data-i18n="nav_about">About</a>
+      <a href="index.html#programs" data-i18n="nav_programs">Programs</a>
+      <a href="schedule.html" data-i18n="nav_schedule" class="active">Schedule</a>
+      <a href="memberships.html" data-i18n="nav_memberships" class="">Memberships</a>
+      <a href="index.html#trial" data-i18n="nav_trial">Free Trial</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" onclick="setLang('pt')">PT</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="logo-mark" style="margin-bottom:2.5rem"><span class="logo-top" style="font-size:2.2rem">jiu-jitsu</span><span class="logo-bot" style="font-size:.75rem">Prime Club</span></div>
+  <a href="index.html" onclick="toggleMenu()" data-i18n="nav_home">Home</a>
+  <a href="index.html#programs" onclick="toggleMenu()" data-i18n="nav_programs">Programs</a>
+  <a href="schedule.html" onclick="toggleMenu()" data-i18n="nav_schedule">Schedule</a>
+  <a href="memberships.html" onclick="toggleMenu()" data-i18n="nav_memberships">Memberships</a>
+  <a href="index.html#trial" onclick="toggleMenu()" data-i18n="nav_trial">Free Trial</a>
+  <div class="mobile-lang">
+    <button class="active" onclick="setLang('en');toggleMenu()">EN</button>
+    <button onclick="setLang('pt');toggleMenu()">PT</button>
+    <button onclick="setLang('es');toggleMenu()">ES</button>
+  </div>
+</div>
+<div class="page-banner">
+  <div class="banner-rule"><span>VENICE, CALIFORNIA</span></div>
+  <div class="banner-bg-word">SCHEDULE</div>
+  <div class="banner-deco">
+    <svg viewBox="0 0 320 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="320" y1="0" x2="0" y2="400" stroke="rgba(201,168,76,0.06)" stroke-width="1"/>
+      <line x1="320" y1="60" x2="60" y2="400" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+      <line x1="320" y1="120" x2="120" y2="400" stroke="rgba(201,168,76,0.03)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="banner-inner">
+    <span class="banner-eyebrow" data-i18n="banner_eyebrow">JIUJITSU PRIME CLUB — VENICE, CA</span>
+    <h1 class="banner-title" data-i18n="banner_title_sched">Class Schedule</h1>
+    <p class="banner-sub" data-i18n="banner_sub_sched"></p>
+  </div>
+</div>
+
+<nav class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span class="breadcrumb-sep">/</span>
+  <span style="color:var(--gold)">Class Schedule</span>
+</nav>
+<div class="info-strip reveal">
+  <div class="info-strip-inner">
+    <div class="info-card">
+      <div class="info-card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="info-card-label">SCHEDULE</div>
+      <div class="info-card-value">7 Days a Week</div>
+      <div class="info-card-detail">Morning, afternoon &amp; evening slots available daily.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="info-card-label">CLASS DURATION</div>
+      <div class="info-card-value">60 – 90 min</div>
+      <div class="info-card-detail">Structured warm-up, technique drilling, and live rolling.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="info-card-label">ALL LEVELS</div>
+      <div class="info-card-value">Beginners Welcome</div>
+      <div class="info-card-detail">Fundamentals, open mat, and competition prep tracks.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="info-card-label">LOCATION</div>
+      <div class="info-card-value">Venice, CA</div>
+      <div class="info-card-detail">2494 Lincoln Blvd, Venice, CA 90291</div>
+    </div>
+  </div>
+</div>
+<section class="widget-section">
+  <div class="widget-inner">
+    <div class="widget-header reveal">
+      <div class="widget-title" data-i18n="widget_title_sched">Weekly <span>Class</span> Calendar</div>
+      <div class="widget-note" data-i18n="widget_note_sched">Select a class to view details and reserve your spot.</div>
+    </div>
+    <div class="glofox-wrap reveal">
+      <div class="glofox-inner">
+        <iframe id="glofox_1"
+          src="https://app.glofox.com/portal/#/branch/69ebe722d5f1444576081528/classes-week-view?header=classes"
+          width="100%" height="0" scrolling="no" frameborder="0"></iframe>
+      </div>
+      <div class="glofox-footer">
+        powered by <a href="https://www.glofox.com" target="_blank" rel="noopener">Glofox</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="cta-band reveal">
+  <div class="cta-band-inner">
+    <span class="cta-eyebrow" data-i18n="cta_eyebrow_sched">FIRST CLASS FREE</span>
+    <h2 class="cta-headline" data-i18n="cta_headline_sched">Not sure where to start?</h2>
+    <p class="cta-sub" data-i18n="cta_sub_sched">Try any class at no cost. No commitment, no gear required.</p>
+    <a href="index.html#trial" class="btn-gold" data-i18n="cta_btn_sched">Claim Free Trial</a>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-mark large" style="margin-bottom:1.2rem"><span class="logo-top">jiu-jitsu</span><span class="logo-bot">Prime Club</span></div>
+        <p data-i18n="footer_desc">A premium Brazilian Jiu-Jitsu academy in Venice, CA. Gracie-rooted, community-driven, recovery-focused.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="social-link" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_nav_title">Navigation</h4>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="index.html#programs" data-i18n="nav_programs">Programs</a>
+        <a href="schedule.html" data-i18n="nav_schedule">Schedule</a>
+        <a href="memberships.html" data-i18n="nav_memberships">Memberships</a>
+        <a href="index.html#trial" data-i18n="nav_trial">Free Trial</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_info_title">Information</h4>
+        <a href="index.html#faq" data-i18n="footer_faq">FAQ</a>
+        <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer_terms">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact_title">Contact</h4>
+        <p>2494 Lincoln Blvd<br>Venice, CA 90291</p>
+        <a href="mailto:info@jiujitsuprime.com">info@jiujitsuprime.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer_copy">© 2025 Jiujitsu Prime Club. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer_privacy">Privacy</a>
+        <a href="#" data-i18n="footer_terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+const translations = {
+  en:{
+    nav_home:'Home',nav_about:'About',nav_programs:'Programs',
+    nav_schedule:'Schedule',nav_memberships:'Memberships',nav_trial:'Free Trial',
+    banner_eyebrow:'JIUJITSU PRIME CLUB — VENICE, CA',
+    banner_title_sched:'Class Schedule', banner_sub_sched:'Book your spot — classes for all levels, every week.',
+    banner_title_memb:'Memberships', banner_sub_memb:'Transparent pricing. No contracts. Train at your own pace.',
+    widget_title_sched:'Weekly <span>Class</span> Calendar',
+    widget_title_memb:'Choose Your <span>Plan</span>',
+    widget_note_sched:'Select a class to view details and reserve your spot.',
+    widget_note_memb:'All plans include full facility access and sauna recovery.',
+    cta_eyebrow_sched:'FIRST CLASS FREE', cta_headline_sched:'Not sure where to start?',
+    cta_sub_sched:'Try any class at no cost. No commitment, no gear required.',
+    cta_btn_sched:'Claim Free Trial',
+    cta_eyebrow_memb:'START TODAY', cta_headline_memb:'Ready to join the mat?',
+    cta_sub_memb:'Your first class is free. Come in, see the space, meet the team.',
+    cta_btn_memb:'Book Free Trial',
+    footer_desc:'A premium Brazilian Jiu-Jitsu academy in Venice, CA. Gracie-rooted, community-driven, recovery-focused.',
+    footer_nav_title:'Navigation',footer_info_title:'Information',footer_contact_title:'Contact',
+    footer_faq:'FAQ',footer_privacy:'Privacy Policy',footer_terms:'Terms of Use',
+    footer_copy:'© 2025 Jiujitsu Prime Club. All rights reserved.'
+  },
+  pt:{
+    nav_home:'Início',nav_about:'Sobre',nav_programs:'Programas',
+    nav_schedule:'Horários',nav_memberships:'Planos',nav_trial:'Aula Grátis',
+    banner_eyebrow:'JIUJITSU PRIME CLUB — VENICE, CA',
+    banner_title_sched:'Horário de Aulas', banner_sub_sched:'Reserve seu lugar — aulas para todos os níveis, toda semana.',
+    banner_title_memb:'Planos', banner_sub_memb:'Preço transparente. Sem contratos. Treine no seu ritmo.',
+    widget_title_sched:'Calendário <span>Semanal</span>',
+    widget_title_memb:'Escolha seu <span>Plano</span>',
+    widget_note_sched:'Selecione uma aula para ver detalhes e reservar seu lugar.',
+    widget_note_memb:'Todos os planos incluem acesso completo à academia e sauna.',
+    cta_eyebrow_sched:'PRIMEIRA AULA GRÁTIS', cta_headline_sched:'Não sabe por onde começar?',
+    cta_sub_sched:'Experimente qualquer aula sem custo. Sem compromisso, sem equipamento.',
+    cta_btn_sched:'Aula Experimental',
+    cta_eyebrow_memb:'COMECE HOJE', cta_headline_memb:'Pronto para entrar no tatame?',
+    cta_sub_memb:'Sua primeira aula é gratuita. Venha conhecer o espaço e a equipe.',
+    cta_btn_memb:'Aula Grátis',
+    footer_desc:'Uma academia de Jiu-Jitsu Brasileiro premium em Venice, CA. Raízes Gracie, comunidade, recuperação.',
+    footer_nav_title:'Navegação',footer_info_title:'Informações',footer_contact_title:'Contato',
+    footer_faq:'Perguntas Frequentes',footer_privacy:'Política de Privacidade',footer_terms:'Termos de Uso',
+    footer_copy:'© 2025 Jiujitsu Prime Club. Todos os direitos reservados.'
+  },
+  es:{
+    nav_home:'Inicio',nav_about:'Sobre',nav_programs:'Programas',
+    nav_schedule:'Horarios',nav_memberships:'Membresías',nav_trial:'Clase Gratis',
+    banner_eyebrow:'JIUJITSU PRIME CLUB — VENICE, CA',
+    banner_title_sched:'Horario de Clases', banner_sub_sched:'Reserva tu lugar — clases para todos los niveles, cada semana.',
+    banner_title_memb:'Membresías', banner_sub_memb:'Precios transparentes. Sin contratos. Entrena a tu ritmo.',
+    widget_title_sched:'Calendario <span>Semanal</span>',
+    widget_title_memb:'Elige tu <span>Plan</span>',
+    widget_note_sched:'Selecciona una clase para ver detalles y reservar tu lugar.',
+    widget_note_memb:'Todos los planes incluyen acceso completo y sauna de recuperación.',
+    cta_eyebrow_sched:'PRIMERA CLASE GRATIS', cta_headline_sched:'¿No sabes por dónde empezar?',
+    cta_sub_sched:'Prueba cualquier clase sin costo. Sin compromiso, sin equipo.',
+    cta_btn_sched:'Clase de Prueba',
+    cta_eyebrow_memb:'EMPIEZA HOY', cta_headline_memb:'¿Listo para pisar el tatami?',
+    cta_sub_memb:'Tu primera clase es gratis. Ven, conoce el espacio y al equipo.',
+    cta_btn_memb:'Clase Gratis',
+    footer_desc:'Una academia premium de Jiu-Jitsu Brasileño en Venice, CA. Raíces Gracie, comunidad, recuperación.',
+    footer_nav_title:'Navegación',footer_info_title:'Información',footer_contact_title:'Contacto',
+    footer_faq:'Preguntas Frecuentes',footer_privacy:'Política de Privacidad',footer_terms:'Términos de Uso',
+    footer_copy:'© 2025 Jiujitsu Prime Club. Todos los derechos reservados.'
+  }
+};
+
+const PAGE = 'schedule';
+let currentLang='en';
+
+function applyLang(lang){
+  const t=translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(t[k]!==undefined) el.innerHTML=t[k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+  document.querySelectorAll('.mobile-lang button').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+}
+function setLang(lang){currentLang=lang;applyLang(lang);localStorage.setItem('pclang',lang);}
+
+(function(){
+  var t=localStorage.getItem('pct')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var lang=localStorage.getItem('pclang')||'en';
+  if(lang!=='en') setTimeout(()=>applyLang(lang),0);
+})();
+
+function toggleTheme(){
+  var el=document.documentElement;
+  var next=el.getAttribute('data-theme')==='light'?'dark':'light';
+  el.setAttribute('data-theme',next);
+  localStorage.setItem('pct',next);
+}
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+// Reveal on scroll
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+<\/script>
+<script>
+iFrameResize({log:false,checkOrigin:false,tolerance:10,sizeHeight:true,heightCalculationMethod:'lowestElement',minHeight:300,scrolling:'auto'},'#glofox_1');
+<\/script>
+</body>
+</html>
